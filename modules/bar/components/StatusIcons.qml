@@ -74,7 +74,7 @@ Item {
 
             sourceComponent: StyledText {
                 animate: true
-                text: Hyprland.kbLayout
+                text: Niri.currentKeyboardLayout
                 color: root.colour
                 font.family: Appearance.font.family.mono
             }

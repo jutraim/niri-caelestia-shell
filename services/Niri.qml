@@ -24,6 +24,9 @@ Singleton {
 
     property string focusedMonitorName: "eDP-2" //placeholder
 
+    property var allKeyboardLayouts: []
+    property string currentKeyboardLayout: ""
+
     // Overview state
     property bool inOverview: false
 
@@ -173,8 +176,35 @@ Singleton {
         }
     }
 
+    // Load initial keyboard layout data
+    Process {
+        id: initialKeyboardLayoutQuery
+        command: ["niri", "msg", "-j", "keyboard-layouts"]
+        running: false
+
+        stdout: StdioCollector {
+            onStreamFinished: {
+                if (text && text.trim()) {
+                    try {
+                      const keyboardLayoutData = JSON.parse(text.trim());
+                        if (keyboardLayoutData && keyboardLayoutData.names) {
+                            root.allKeyboardLayouts = keyboardLayoutData.names;
+                            root.handleKeyboardLayoutChanged({
+                                idx: keyboardLayoutData.current_idx
+                            });
+                            console.log("NiriService: Loaded initial keyboard layouts:", keyboardLayoutData.names);
+                        }
+                    } catch (e) {
+                        console.warn("NiriService: Failed to parse initial keyboard layouts data:", e);
+                    }
+                }
+            }
+        }
+    }
+    
     function loadInitialWorkspaceData() {
         console.log("NiriService: Loading initial workspace data...");
+        initialKeyboardLayoutQuery.running = true;
         initialDataQuery.running = true;
         initialWindowsQuery.running = true;
         initialFocusedWindowQuery.running = true;
@@ -220,7 +250,13 @@ Singleton {
             handleWindowOpenedOrChanged(event.WindowOpenedOrChanged);
         } else if (event.OverviewOpenedOrClosed) {
             handleOverviewChanged(event.OverviewOpenedOrClosed);
+        } else if (event.KeyboardLayoutSwitched) {
+            handleKeyboardLayoutChanged(event.KeyboardLayoutSwitched);
         }
+      }
+
+    function handleKeyboardLayoutChanged(data) {
+      currentKeyboardLayout = allKeyboardLayouts[data.idx].slice(0,2).toLowerCase();
     }
 
     function handleWorkspacesChanged(data) {
