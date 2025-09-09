@@ -23,6 +23,16 @@ https://github.com/user-attachments/assets/0840f496-575c-4ca6-83a8-87bb01a85c5f
 >
 > This repo is **ONLY for the desktop shell** of the caelestia dots. For the default caelestia dots, head to [the main repo](https://github.com/caelestia-dots/caelestia) instead.
 
+>[!WARNING]
+> **HELP REQUIRED!**
+>
+> I **skipped** unneccesary commit from original shell named: "bar/workspaces: add special ws overlay" and "bar/workspaces: better scroll" because there is no special workspace in Niri.
+>
+> Unfortunately, I **skipped** an important commit from original shell named: "bar: per-monitor workspaces option (#394)"
+> - **Reason:** I don't have multi monitor so I'm not sure if this actually works, I might break stuff :/. I need help implementing that feature :)
+
+
+
 ---
 
 ## ✨ What’s Different in This Fork?
@@ -56,7 +66,7 @@ Replaces **`Hyprland`** with **`Niri`** as the window manager.
 - * [x]  Task manager (GPU/CPU/Memory monitoring, still improving)
 - * [x]  Collapsible container UI element
 - * [ ]  Application dock
-
+- * [ ]  Searching programs in Niri overview
 
 > [!NOTE]
 > Some Caelestia features are dropped or WIP due to Niri limitations. See [ known issues](#-known-issues)
@@ -70,7 +80,7 @@ You need both runtime dependencies and development headers.
 <br>
 
 * All dependencies in plain text:
-   * `quickshell-git networkmanager fish glibc qt6-declarative gcc-libs cava aubio libpipewire lm-sensors ddcutil brightnessctl material-symbols caskaydia-cove-nerd grim swappy app2unit libqalculate`
+   * `quickshell-git networkmanager fish glibc qt6-declarative gcc-libs cava libcava aubio libpipewire lm-sensors ddcutil brightnessctl material-symbols caskaydia-cove-nerd grim swappy app2unit libqalculate`
 
 > [!NOTE]
 >
@@ -152,7 +162,7 @@ Then simply build and install using `cmake`.
 2. Clone the repo:
 
     ```sh
-    cd $XDG_CONFIG_HOME/.config/quickshell
+    cd $XDG_CONFIG_HOME/quickshell
     git clone https://github.com/jutraim/niri-caelestia-shell
     ```
 3. Build:
@@ -166,8 +176,10 @@ Then simply build and install using `cmake`.
     cmake --build build
     cmake --install build
     ```
-    It's trying to install into system paths (/usr/lib/caelestia/...),
+    It's trying to install into system paths (`/usr/lib/caelestia/...`),
     so grab the necessary permissions or use sudo while installing.
+
+    If you get `VERSION is not set and failed to get from git` error, that means I forgot to tag version. You can do `git tag 1.1.1` to work around it :)
 
 ### 🔃 Updating
 You can update by running `git pull` in `$XDG_CONFIG_HOME/quickshell/niri-caelestia-shell`.
