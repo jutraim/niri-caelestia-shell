@@ -219,7 +219,11 @@ All IPC commands can be called via `quickshell -c niri-caelestia-shell ipc call 
 
 * Example shortcut in `config.kdl` to toggle the launcher drawer:
     ```sh
-    Mod+Space { spawn  "qs" "-c" "shell" "ipc" "call" "drawers" "toggle" "launcher"; }
+    Mod+Space { spawn  "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher"; }
+    ```
+
+    ```sh
+    Mod+Space hotkey-overlay-title="Caelestia app launcher" { spawn-sh "qs -c niri-caelestia-shell ipc call drawers toggle launcher"; }
     ```
 
 <br>
