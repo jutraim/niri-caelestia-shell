@@ -22,7 +22,7 @@
   quickshell,
   aubio,
   libcava,
-  libpipewire,
+  pipewire,
   xkeyboard-config,
   cmake,
   ninja,
