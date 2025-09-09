@@ -168,10 +168,10 @@ Then simply build and install using `cmake`.
 3. Build:
 
     ```sh
-    cd $XDG_CONFIG_HOME/.config/quickshell/niri-caelestia-shell
+    cd $XDG_CONFIG_HOME/quickshell/niri-caelestia-shell
     cmake -B build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=$HOME/.local \
+      -DCMAKE_INSTALL_PREFIX=$HOME \
       -DINSTALL_QSCONFDIR=$HOME/.config/quickshell/niri-caelestia-shell
     cmake --build build
     cmake --install build
