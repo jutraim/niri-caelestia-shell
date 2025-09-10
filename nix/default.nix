@@ -13,6 +13,7 @@
   swappy,
   wl-clipboard,
   libqalculate,
+  fftw
   bash,
   hyprland,
   material-symbols,
@@ -85,7 +86,7 @@
       fileset = lib.fileset.union ./../CMakeLists.txt ./../plugin;
     };
 
-    nativeBuildInputs = [cmake ninja pkg-config];
+    nativeBuildInputs = [cmake ninja pkg-config fftw];
     buildInputs = [qt6.qtbase qt6.qtdeclarative qt6.qtmultimedia libqalculate pipewire aubio libcava];
 
     dontWrapQtApps = true;
