@@ -86,8 +86,8 @@
       fileset = lib.fileset.union ./../CMakeLists.txt ./../plugin;
     };
 
-    nativeBuildInputs = [cmake ninja pkg-config fftw];
-    buildInputs = [qt6.qtbase qt6.qtdeclarative qt6.qtmultimedia libqalculate pipewire aubio libcava];
+    nativeBuildInputs = [cmake ninja pkg-config];
+    buildInputs = [qt6.qtbase qt6.qtdeclarative fftw qt6.qtmultimedia libqalculate pipewire aubio libcava];
 
     dontWrapQtApps = true;
     cmakeFlags =
