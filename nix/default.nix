@@ -13,7 +13,7 @@
   swappy,
   wl-clipboard,
   libqalculate,
-  fftw
+  fftw,
   bash,
   hyprland,
   material-symbols,
