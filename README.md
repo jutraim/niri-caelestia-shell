@@ -433,6 +433,7 @@ Config lives in:
         "thickness": 10
     },
     "dashboard": {
+        "showOnFocusOverlay": false,
         "mediaUpdateInterval": 500,
         "showOnHover": true
     },

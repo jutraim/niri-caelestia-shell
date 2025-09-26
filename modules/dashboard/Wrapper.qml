@@ -56,7 +56,7 @@ Item {
         target: Niri
         function onFocusedWindowIdChanged() {
             // Show dashboard for 1 second
-            if ((!root.visibilities.dashboard && !root.expanded) && Niri.focusedWindowId) {
+            if (Config.dashboard.showOnFocusOverlay && (!root.visibilities.dashboard && !root.expanded) && Niri.focusedWindowId) {
                 root.isvisible = true;
                 flashTimer.restart();
             }
