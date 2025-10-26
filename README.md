@@ -183,6 +183,22 @@ Then simply build and install using `cmake`.
 
     If you get `VERSION is not set and failed to get from git` error, that means I forgot to tag version. You can do `git tag 1.1.1` to work around it :)
 
+### Arch Installation
+If you are on Arch the following commands do a proper installation (mind the prefix):
+```bash
+# Dependencies
+pacman -S --needed cava aubio libpipewire lm_sensors ddcutil brightnessctl grim swappy libqalculate ttf-cascadia-code-nerd qt6-declarative
+yay -S quickshell-git app2unit libcava ttf-material-symbols-variable-git
+# Clone Repo
+cd $XDG_CONFIG_HOME/quickshell
+git clone https://github.com/jutraim/niri-caelestia-shell
+# Build & Install
+cd ~/.config/quickshell/niri-caelestia-shell
+cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
+cmake --build build
+sudo cmake --install build
+```
+
 ### 🔃 Updating
 You can update by running `git pull` in `$XDG_CONFIG_HOME/quickshell/niri-caelestia-shell`.
 
@@ -417,6 +433,7 @@ Config lives in:
         "thickness": 10
     },
     "dashboard": {
+        "showOnFocusOverlay": false,
         "mediaUpdateInterval": 500,
         "showOnHover": true
     },
