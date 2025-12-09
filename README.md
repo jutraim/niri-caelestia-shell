@@ -158,6 +158,33 @@ Then simply build and install using `cmake`.
 > [!NOTE]
 > There is **NO** package manager installation support yet because... 🤔
 
+### Nix:
+
+You can run the shell directly via `nix run`:
+
+```sh
+nix run github:jutraim/niri-caelestia-shell
+```
+
+Or add it to your system configuration:
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    
+    niri-caelestia-shell = {
+      url = "github:jutraim/niri-caelestia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+}
+
+``` 
+The package is available as `caelestia-shell.packages.<system>.default`, which can be added to your
+`environment.systemPackages`, `users.users.<username>.packages`, `home.packages` if using home-manager,
+or a devshell. The shell can then be run via `caelestia-shell`.
+
 ### Manual Build
 
 1. Install dependencies.
@@ -503,19 +530,40 @@ Config lives in:
 
 </details>
 
-<details><summary> <b> Example Nix Home Manager </b></summary>
+<details><summary> <b> Nix Home Manager Module </b></summary>
 
-I don't have nix, plz help :D
+ Setup: 
+   Add the module to inputs:
+
+   ```nix
+
+   niri-caelestia-shell.homeManagerModules.default
+   ```
+ Configure the module with:
 
 ```nix
 {
-  programs.niri-caelestia-shell = {
+  programs.caelestia = {
     enable = true;
-    with-cli = true;
-    settings.theme.accent = "#ffb86c";
+    systemd = {
+      enable = false; # if you prefer starting from your compositor
+      target = "graphical-session.target";
+      environment = [];
+    };
+    settings = {
+      bar = {
+        "persistent" = true; #decides if the bar is "persistent", default = false
+        "showOnHover" = true; #makes the bar show on hover, default = true   
+        status = {
+          showBattery = false;
+        };
+      };
+      paths.wallpaperDir = "~/Images";
+    };
   };
 }
 ```
+The module automatically adds Caelestia shell to the path with **full functionality**. 
 
 </details>
 
