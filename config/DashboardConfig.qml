@@ -6,6 +6,7 @@ JsonObject {
     property int mediaUpdateInterval: 500
     property int dragThreshold: 50
     property Sizes sizes: Sizes {}
+    property bool showOnFocusOverlay: false
 
     component Sizes: JsonObject {
         readonly property int tabIndicatorHeight: 3
