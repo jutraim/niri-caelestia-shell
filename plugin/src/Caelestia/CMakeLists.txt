@@ -17,7 +17,6 @@ qt_add_qml_module(caelestia
         serviceref.hpp serviceref.cpp
         audiocollector.hpp audiocollector.cpp
         audioprovider.hpp audioprovider.cpp
-        cavaprovider.hpp cavaprovider.cpp
 )
 
 qt_query_qml_module(caelestia
