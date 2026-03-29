@@ -1,18 +1,5 @@
-pragma Singleton
+import QtQuick
 
-import qs.config
-import Caelestia
-import Quickshell
-
-Singleton {
-    id: root
-
-    readonly property alias provider: provider
-    readonly property alias values: provider.values
-
-    CavaProvider {
-        id: provider
-
-        bars: Config.services.visualiserBars
-    }
+QtObject {
+    // Cava Disabled by Sarok
 }
