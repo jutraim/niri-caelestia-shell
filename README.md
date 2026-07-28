@@ -19,9 +19,7 @@ https://github.com/user-attachments/assets/0840f496-575c-4ca6-83a8-87bb01a85c5f
 </div>
 
 > [!CAUTION]
-> This is my personal thingy and it's **STILL WORK IN PROGRESS.**
->
-> Due to civil unrest in my country I don't have much time to boot up my PC so I update slowly :/
+> This fork is outdated and abandoned, it does work but isn't up-to-date. Please check out other forks!
 >
 > This repo is **ONLY for the desktop shell** of the caelestia dots. For the default caelestia dots, head to [the main repo](https://github.com/caelestia-dots/caelestia) instead.
 
